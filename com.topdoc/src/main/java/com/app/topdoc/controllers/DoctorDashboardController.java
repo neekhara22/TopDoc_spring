@@ -16,7 +16,7 @@ import com.app.topdoc.services.DoctorDashboardService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/dashboard")
+@RequestMapping("/doctorDashboard")
 public class DoctorDashboardController {
 	public void DoctorDashboardController (){
 		System.out.println("In constructor");
