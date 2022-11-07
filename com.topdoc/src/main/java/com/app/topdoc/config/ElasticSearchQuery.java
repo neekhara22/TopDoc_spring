@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Repository
-public class ElasticSearchQuery {
+public class ElasticSearchQuery  {
 
     @Autowired
     private ElasticsearchClient elasticsearchClient;
