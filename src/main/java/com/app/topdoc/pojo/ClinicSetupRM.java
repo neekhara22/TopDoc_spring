@@ -1,31 +1,58 @@
 package com.app.topdoc.pojo;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class ClinicSetupRM {
- 
- private int clinicConsultationFee;
-private String clinicCountry;
- private String clinicDistrict;
- private String clinicGeoPoint;
- private String clinicId;
- private String clinicImageUrl;
- private boolean clinicIsActive;
- private String clinicLocation;
- private String clinicName;
- private double clinicRating;
- private String clinicState;
-// private String[] clinicTagReceived;
- private int clinicZipCode;
- 
+
+	@Field(type = FieldType.Float, name = "fees")
+	private int fees;
+	
+	@Field(type = FieldType.Text, name = "country")
+	private String country;
+	
+	@Field(type = FieldType.Text, name = "district")
+	private String district;
+//	
+//	@Field(type = FieldType.Auto, name = "geoPoint")
+//	private String geoPoint;
+	
+   @Id
+   @Field(type = FieldType.Text, name = "clinicId")
+	private String id;
+	
+   @Field(type = FieldType.Text, name = "clinicImageUrl")
+	private String imageUrl;
+	
+   @Field(type = FieldType.Boolean, name = "isActive")
+	private boolean isActive;
+	
+//   @Field(type = FieldType.Text, name = "clinicLocation")
+//	private String location;
+   
+   @Field(type = FieldType.Text, name = "clinicName")
+	private String name;
+   
+   @Field(type = FieldType.Double, name = "clinicRating")
+	private double rating;
+   
+   @Field(type = FieldType.Text, name = "state")
+	private String state;
+
+   @Field(type = FieldType.Auto, name = "tagReceived")
+	private ArrayList<String> tagReceived = new ArrayList<String>();
+   
+   @Field(type = FieldType.Integer, name = "zipCode")
+	private int zipCode;
+
 }

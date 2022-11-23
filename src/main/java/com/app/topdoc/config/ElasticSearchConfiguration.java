@@ -10,26 +10,34 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ElasticSearchConfiguration
-{
+public class ElasticSearchConfiguration {
+//	ElasticsearchClient client = getElasticsearchClient();
+//
+//	private ElasticsearchClient getElasticsearchClient() {
+//		RestClient builder = RestClient.builder(new HttpHost("localhost", 9200)).build();
+//
+//		ElasticsearchTransport transport = new RestClientTransport(builder, new JacksonJsonpMapper());
+//
+//		return new ElasticsearchClient(transport);
+//	}
+
     @Bean
     public RestClient getRestClient() {
         RestClient restClient = RestClient.builder(
-                new HttpHost("192.168.29.66", 9200)).build();
+                new HttpHost("localhost", 9200)).build();
         return restClient;
     }
 
-    @Bean
-    public  ElasticsearchTransport getElasticsearchTransport() {
-        return new RestClientTransport(
-                getRestClient(), new JacksonJsonpMapper());
-    }
+	 @Bean
+	    public  ElasticsearchTransport getElasticsearchTransport() {
+	        return new RestClientTransport(
+	                getRestClient(), new JacksonJsonpMapper());
+	    }
 
-
-    @Bean
-    public ElasticsearchClient getElasticsearchClient(){
-        ElasticsearchClient client = new ElasticsearchClient(getElasticsearchTransport());
-        return client;
-    }
+	 @Bean
+	    public ElasticsearchClient getElasticsearchClient(){
+	        ElasticsearchClient client = new ElasticsearchClient(getElasticsearchTransport());
+	        return client;
+	    }
 
 }

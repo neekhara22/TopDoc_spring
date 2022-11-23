@@ -1,35 +1,30 @@
 package com.app.topdoc.controllers;
 
-import java.io.IOException;
-import java.util.List;
-
 import javax.validation.Valid;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.topdoc.config.Product;
 import com.app.topdoc.pojo.ClinicSetupRM;
+import com.app.topdoc.services.ClinicSetupService;
+
+import co.elastic.clients.elasticsearch.core.UpdateResponse;
 
 @RestController
 @RequestMapping("/clinicSetup")
 public class ClinicSetupController {
 
-	@PostMapping(value ="/updateClinic")
-    public void createClinic(@Valid @RequestBody ClinicSetupRM clinic) throws IOException {
-        System.out.println("clinic is "+clinic); 
-//        return clinic.toString();
-    }
-	
-	
+	@Autowired
+	public ClinicSetupService clinicSetupService;
+
+	@PostMapping(value = "/save")
+	public UpdateResponse<ClinicSetupRM> createClinic(@Valid @RequestBody ClinicSetupRM clinicSetupRM) {
+
+		return clinicSetupService.createClinic(clinicSetupRM);
+	}
 	
 	
 	
