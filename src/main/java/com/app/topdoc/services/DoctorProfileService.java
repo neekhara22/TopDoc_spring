@@ -17,4 +17,6 @@ public interface DoctorProfileService {
 
 	public String deleteDoctorById(String id) throws ElasticsearchException, IOException;
 
+	public String updateDoctorById(String id, DoctorRM doctorRM) throws ElasticsearchException, IOException;
+
 }

@@ -28,11 +28,8 @@ public class ElasticsearchQuery {
 				.index(i -> i.index(indexName).id(doctorRM.getId()).document(doctorRM));
 		if (response.result().name().equals("Created")) {
 			return new StringBuilder("Document has been successfully created.").toString();
-		} else if (response.result().name().equals("Updated")) {
-			return new StringBuilder("Document has been successfully updated.").toString();
 		}
 		return new StringBuilder("Error while performing the operation.").toString();
-
 	}
 
 	public List<DoctorRM> getDoctors() throws ElasticsearchException, IOException {
@@ -49,8 +46,7 @@ public class ElasticsearchQuery {
 
 	public DoctorRM getDoctorById(String id) throws ElasticsearchException, IOException {
 		DoctorRM doctor = null;
-		GetResponse<DoctorRM> response = elasticsearchClient.get(g -> g.index(indexName).id(id),
-				DoctorRM.class);
+		GetResponse<DoctorRM> response = elasticsearchClient.get(g -> g.index(indexName).id(id), DoctorRM.class);
 		System.out.println("get call " + response);
 
 		if (response.found()) {
@@ -73,6 +69,18 @@ public class ElasticsearchQuery {
 		System.out.println("Doctor not found");
 		return new StringBuilder("Doctor with id " + deleteResponse.id() + " does not exist.").toString();
 
+	}
+
+	public String updateDoctorById(String id, DoctorRM doctorRM) throws ElasticsearchException, IOException {
+//		UpdateRequest<DoctorRM, DoctorRM> updateRequest = UpdateRequest
+//				.of(req -> req.index(indexName).id(id).doc(doctorRM));
+//		UpdateResponse<DoctorRM> response = elasticsearchClient.update(updateRequest, DoctorRM.class);
+		UpdateResponse<DoctorRM> response = elasticsearchClient.update(req -> req.index(indexName).id(id).doc(doctorRM),
+				DoctorRM.class);
+		if (response.result().name().equals("Updated")) {
+			return new StringBuilder("Document has been successfully updated.").toString();
+		}
+		return new StringBuilder("Error while performing the operation.").toString();
 	}
 
 }

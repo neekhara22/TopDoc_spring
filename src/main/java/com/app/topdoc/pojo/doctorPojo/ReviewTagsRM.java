@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReviewTagsRM {
 
-	@Field(type = FieldType.Text, name = "tagName")
-	private String tagName;
-
 	@Field(type = FieldType.Text, name = "description")
 	private String description;
+
+	@Field(type = FieldType.Text, name = "tagName")
+	private String tagName;
 }

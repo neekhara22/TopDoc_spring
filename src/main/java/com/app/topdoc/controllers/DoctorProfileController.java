@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,14 +42,14 @@ public class DoctorProfileController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
-	/*
-	 * @PutMapping(value = "/update/{id}") public ResponseEntity<Object>
-	 * updateDoctorById(@RequestBody DoctorRM doctorRM) {
-	 * LOGGER.info("Updating doctor profile by id"); DoctorRM doctor =
-	 * doctorProfileService.updateDoctorById(doctorRM);
-	 * LOGGER.info("Doctor profile updated by id"); return new
-	 * ResponseEntity<>(doctor, HttpStatus.OK); }
-	 */
+	@PutMapping(value = "/update/{id}")
+	public ResponseEntity<Object> updateDoctorById(@PathVariable("id") String id, @RequestBody DoctorRM doctorRM)
+			throws ElasticsearchException, IOException {
+		LOGGER.info("Updating doctor profile by id");
+		String doctor = doctorProfileService.updateDoctorById(id, doctorRM);
+		LOGGER.info("Doctor profile updated by id");
+		return new ResponseEntity<>(doctor, HttpStatus.OK);
+	}
 
 	@GetMapping(value = "/get")
 	public ResponseEntity<Object> getDoctors() throws ElasticsearchException, IOException {

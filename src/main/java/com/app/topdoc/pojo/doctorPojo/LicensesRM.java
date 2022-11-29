@@ -21,12 +21,12 @@ public class LicensesRM {
 	@Field(type = FieldType.Text, name = "name")
 	private String name;
 
+	@Field(type = FieldType.Text, name = "provider")
+	private String provider;
+
 	@Field(type = FieldType.Date, format = DateFormat.basic_date, name = "registrationYear")
 	private Date registrationYear;
 
 	@Field(type = FieldType.Date, format = DateFormat.basic_date, name = "validUpTo")
 	private Date validUpTo;
-
-	@Field(type = FieldType.Text, name = "provider")
-	private String provider;
 }

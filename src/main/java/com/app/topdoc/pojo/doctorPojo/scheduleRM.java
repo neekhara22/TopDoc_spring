@@ -12,24 +12,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class scheduleRM {
 
-	@Field(type = FieldType.Object, name = "monday")
-	private SessionRM monday;
-
-	@Field(type = FieldType.Object, name = "tuesday")
-	private SessionRM tuesday;
-
-	@Field(type = FieldType.Object, name = "wednesday")
-	private SessionRM wednesday;
-
-	@Field(type = FieldType.Object, name = "thursday")
-	private SessionRM thursday;
-
 	@Field(type = FieldType.Object, name = "friday")
 	private SessionRM friday;
+
+	@Field(type = FieldType.Object, name = "monday")
+	private SessionRM monday;
 
 	@Field(type = FieldType.Object, name = "saturday")
 	private SessionRM saturday;
 
 	@Field(type = FieldType.Object, name = "sunday")
 	private SessionRM sunday;
+
+	@Field(type = FieldType.Object, name = "thursday")
+	private SessionRM thursday;
+
+	@Field(type = FieldType.Object, name = "tuesday")
+	private SessionRM tuesday;
+
+	@Field(type = FieldType.Object, name = "wednesday")
+	private SessionRM wednesday;
 }

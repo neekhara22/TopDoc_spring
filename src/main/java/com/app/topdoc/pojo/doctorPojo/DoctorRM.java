@@ -22,122 +22,122 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DoctorRM {
 
-	@Field(type = FieldType.Long, name = "yearsOfExperience")
-	private long yearsOfExperience;
+	@MultiField(mainField = @Field(type = FieldType.Text, name = "address"), otherFields = {
+			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
+	private String address;
 
-	@Field(type = FieldType.Long, name = "noOfReviews")
-	private long noOfReviews;
+	@MultiField(mainField = @Field(type = FieldType.Text, name = "ailmentsTreated"), otherFields = {
+			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
+	private List<String> ailmentsTreated = new ArrayList<String>();
+
+	@Field(type = FieldType.Nested, name = "associatedClinics")
+	private ArrayList<AssociatedClinicsRM> associatedClinics;
+
+	@Field(type = FieldType.Double, name = "averageRating")
+	private double averageRating;
+
+	@Field(type = FieldType.Nested, name = "awardsAndPublications")
+	private ArrayList<AwardsAndPublicationsRM> awardsAndPublications;
+
+	@MultiField(mainField = @Field(type = FieldType.Text, name = "city"), otherFields = {
+			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
+	private String city;
 
 	@Field(type = FieldType.Long, name = "consultations")
 	private long consultations;
 
-	@Field(type = FieldType.Long, name = "satisfiedPatients")
-	private long satisfiedPatients;
+	@Field(type = FieldType.Text, name = "country")
+	private String country;
 
-	@Field(type = FieldType.Text, name = "state")
-	private String state;
+	@Field(type = FieldType.Text, name = "designation")
+	private String designation;
+
+	@MultiField(mainField = @Field(type = FieldType.Text, name = "district"), otherFields = {
+			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
+	private String district;
+
+	@Field(type = FieldType.Nested, name = "education")
+	private ArrayList<EducationRM> education;
+
+	@MultiField(mainField = @Field(type = FieldType.Text, name = "email"), otherFields = {
+			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
+	private String email;
+
+	@Field(type = FieldType.Nested, name = "experience")
+	private ArrayList<ExperienceRM> experience;
+
+	@MultiField(mainField = @Field(type = FieldType.Text, name = "firstName"), otherFields = {
+			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
+	private String firstName;
+
+	@Field(type = FieldType.Text, name = "gender")
+	private String gender;
+
+	@Field(type = FieldType.Nested, name = "hospital")
+	private HospitalRM hospital;
 
 	@Id
 //	@ReadOnlyProperty
 	@Field(type = FieldType.Text, name = "id")
 	private String id;
 
-	@Field(type = FieldType.Auto, name = "languages")
-	private List<String> languages = new ArrayList<String>();
-
-	@Field(type = FieldType.Text, name = "profImageUrl")
-	private String profImageUrl;
-
-	@Field(type = FieldType.Text, name = "phone")
-	private String phone;
-
-	@GeoPointField
-	@Field(name = "location")
-	private String location;
-
-	@Field(type = FieldType.Boolean, name = "isVideoAllowed")
-	private boolean isVideoAllowed;
-
 	@Field(type = FieldType.Boolean, name = "isPersonAllowed")
 	private boolean isPersonAllowed;
 
-	@Field(type = FieldType.Text, name = "gender")
-	private String gender;
-
-	@Field(type = FieldType.Text, name = "designation")
-	private String designation;
-
-	@Field(type = FieldType.Text, name = "country")
-	private String country;
-
-	@Field(type = FieldType.Double, name = "averageRating")
-	private double averageRating;
+	@Field(type = FieldType.Boolean, name = "isVideoAllowed")
+	private boolean isVideoAllowed;
 
 	@MultiField(mainField = @Field(type = FieldType.Text, name = "landmark"), otherFields = {
 			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
 	private String landmark;
 
-	@MultiField(mainField = @Field(type = FieldType.Text, name = "firstName"), otherFields = {
-			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
-	private String firstName;
+	@Field(type = FieldType.Auto, name = "languages")
+	private List<String> languages = new ArrayList<String>();
 
 	@MultiField(mainField = @Field(type = FieldType.Text, name = "lastName"), otherFields = {
 			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
 	private String lastName;
 
-	@MultiField(mainField = @Field(type = FieldType.Text, name = "email"), otherFields = {
-			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
-	private String email;
+	@Field(type = FieldType.Nested, name = "licenses")
+	private ArrayList<LicensesRM> licenses;
 
 	@MultiField(mainField = @Field(type = FieldType.Text, name = "locality"), otherFields = {
 			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
 	private String locality;
 
+	@GeoPointField
+	@Field(name = "location")
+	private String location;
+
 	@MultiField(mainField = @Field(type = FieldType.Text, name = "name"), otherFields = {
 			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
 	private String name;
 
-	@MultiField(mainField = @Field(type = FieldType.Text, name = "district"), otherFields = {
-			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
-	private String district;
+	@Field(type = FieldType.Long, name = "noOfReviews")
+	private long noOfReviews;
 
-	@MultiField(mainField = @Field(type = FieldType.Text, name = "city"), otherFields = {
-			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
-	private String city;
+	@Field(type = FieldType.Text, name = "phone")
+	private String phone;
 
-	@MultiField(mainField = @Field(type = FieldType.Text, name = "ailmentsTreated"), otherFields = {
-			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
-	private List<String> ailmentsTreated = new ArrayList<String>();
+	@Field(type = FieldType.Text, name = "profImageUrl")
+	private String profImageUrl;
 
-	@MultiField(mainField = @Field(type = FieldType.Text, name = "address"), otherFields = {
-			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
-	private String address;
+	@Field(type = FieldType.Nested, name = "reviewTags")
+	private ArrayList<ReviewTagsRM> reviewTags;
+
+	@Field(type = FieldType.Long, name = "satisfiedPatients")
+	private long satisfiedPatients;
+
+	@Field(type = FieldType.Object, name = "schedule")
+	private scheduleRM schedule;
 
 	@MultiField(mainField = @Field(type = FieldType.Text, name = "specialization"), otherFields = {
 			@InnerField(suffix = "keyword", type = FieldType.Keyword) })
 	private List<String> specialization = new ArrayList<String>();
 
-	@Field(type = FieldType.Nested, name = "associatedClinics")
-	private ArrayList<AssociatedClinicsRM> associatedClinics;
+	@Field(type = FieldType.Text, name = "state")
+	private String state;
 
-	@Field(type = FieldType.Nested, name = "education")
-	private ArrayList<EducationRM> education;
-
-	@Field(type = FieldType.Nested, name = "experience")
-	private ArrayList<ExperienceRM> experience;
-
-	@Field(type = FieldType.Nested, name = "hospital")
-	private HospitalRM hospital;
-
-	@Field(type = FieldType.Nested, name = "licenses")
-	private ArrayList<LicensesRM> licenses;
-
-	@Field(type = FieldType.Nested, name = "awardsAndPublications")
-	private ArrayList<AwardsAndPublicationsRM> awardsAndPublications;
-
-	@Field(type = FieldType.Nested, name = "reviewTags")
-	private ArrayList<ReviewTagsRM> reviewTags;
-
-	@Field(type = FieldType.Object, name = "schedule")
-	private scheduleRM schedule;
+	@Field(type = FieldType.Long, name = "yearsOfExperience")
+	private long yearsOfExperience;
 }

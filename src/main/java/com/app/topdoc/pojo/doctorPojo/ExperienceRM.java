@@ -15,9 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ExperienceRM {
 
-	@Field(type = FieldType.Text, name = "organisation")
-	private String organisation;
-
 	@Field(type = FieldType.Text, name = "description")
 	private String description;
 
@@ -26,6 +23,9 @@ public class ExperienceRM {
 
 	@Field(type = FieldType.Text, name = "location")
 	private String location;
+
+	@Field(type = FieldType.Text, name = "organisation")
+	private String organisation;
 
 	@Field(type = FieldType.Date, format = DateFormat.basic_date, name = "startDate")
 	private Date startDate;

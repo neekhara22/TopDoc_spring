@@ -43,7 +43,13 @@ public class DoctorProfileServiceImpl implements DoctorProfileService {
 	@Override
 	public String deleteDoctorById(String id) throws ElasticsearchException, IOException {
 		String response = elasticSearchQuery.deleteDoctorById(id);
-		return null;
+		return response;
+	}
+
+	@Override
+	public String updateDoctorById(String id, DoctorRM doctorRM) throws ElasticsearchException, IOException {
+		String response = elasticSearchQuery.updateDoctorById(id, doctorRM);
+		return response;
 	}
 
 }

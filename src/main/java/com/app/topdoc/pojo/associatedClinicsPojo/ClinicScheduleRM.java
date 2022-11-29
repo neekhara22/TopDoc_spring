@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ClinicScheduleRM {
 
+	@Field(type = FieldType.Text, name = "duration")
+	private String duration;
+
 	@Field(type = FieldType.Text, name = "from")
 	private String from;
 
 	@Field(type = FieldType.Text, name = "to")
 	private String to;
-
-	@Field(type = FieldType.Text, name = "duration")
-	private String duration;
 }

@@ -17,14 +17,17 @@ import lombok.NoArgsConstructor;
 @Data
 public class AssociatedClinicsRM {
 
-	@Field(type = FieldType.Float, name = "fees")
-	private int fees;
+	@Field(type = FieldType.Nested, name = "clinicSchedule")
+	private ClinicScheduleRM clinicSchedule;
 
 	@Field(type = FieldType.Text, name = "country")
 	private String country;
 
 	@Field(type = FieldType.Text, name = "district")
 	private String district;
+
+	@Field(type = FieldType.Float, name = "fees")
+	private int fees;
 
 	@GeoPointField
 	@Field(name = "geoPoint")
@@ -57,8 +60,5 @@ public class AssociatedClinicsRM {
 
 	@Field(type = FieldType.Text, name = "zipCode")
 	private String zipCode;
-
-	@Field(type = FieldType.Nested, name = "clinicSchedule")
-	private ClinicScheduleRM clinicSchedule;
 
 }
